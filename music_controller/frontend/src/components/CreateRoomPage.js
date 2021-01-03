@@ -11,7 +11,7 @@ import {
   RadioGroup,
   FormLabel,
 } from "@material-ui/core";
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 export default class CreateRoomPage extends Component {
   defaultVotes = 2;
 
@@ -50,7 +50,7 @@ export default class CreateRoomPage extends Component {
     };
     fetch("/api/create-room", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => this.props.history.push("/room/" + data.code));
   }
 
   render() {
@@ -58,7 +58,7 @@ export default class CreateRoomPage extends Component {
       <Grid container spacing={1}>
         <Grid item xs={12} align="center">
           <Typography component="h4" variant="h4">
-            Create A Room
+            Create A Room Demo
           </Typography>
         </Grid>
         <Grid item xs={12} align="center">
